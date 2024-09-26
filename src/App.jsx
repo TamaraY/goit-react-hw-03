@@ -23,7 +23,11 @@ const App = () => {
 
   // updated  according to the comments
   useEffect(() => {
-    localStorage.setItem("contacts", JSON.stringify(contacts));
+    if (contacts.length > 0) {
+      localStorage.setItem("contacts", JSON.stringify(contacts));
+    } else {
+      localStorage.removeItem("contacts");
+    }
   }, [contacts]);
 
   const handleFilterChange = (newFilter) => {
